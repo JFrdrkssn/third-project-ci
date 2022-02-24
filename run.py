@@ -14,19 +14,21 @@ def random_coord(size):
 
 class Board:
     """
-    The Board class contains almost everything for the game to run. 
+    The Board class contains almost everything for the game to run.
     """
+
     def __init__(self, size, num_ships, name, player=False):
         self.size = size
         self.num_ships = num_ships
         self.name = name
         self.player = player
-        self.board = [["O" for row in range(size)] for col in range(size)]
+        self.board = [["-" for row in range(size)] for col in range(size)]
         # Stores the co-ordinates for ships
         self.ships = []
         # Stores the guesses (co-ordinates)
         self.guesses = []
         self.rounds = 16
+        self.ship_placing()
 
     def board_print(self):
         """
@@ -37,7 +39,7 @@ class Board:
         print("  0 1 2 3 4 5 6 7")
         row_number = 0
         for row in self.board:
-            print(" ".join(row))
+            print(row_number, " ".join(row))
             row_number += 1
 
     def ship_placing(self):
@@ -52,7 +54,7 @@ class Board:
             self.ships.append((row, col))
             if self.player:
                 self.board[row][col] = "S"
-    
+
     def guess(self, row, col):
         """
         Marks misses (M) and hits (*) on the board.
@@ -66,7 +68,7 @@ class Board:
 
         if (row, col) in self.ships:
             self.board[row][col] = "*"
-            print(f"\nHit confirmed, Captain {self.name.capitalize()}!"
+            print("\nHit confirmed, Captain!")
         else:
             print("\nTarget missed, sir!")
 
@@ -100,7 +102,7 @@ class Board:
         """
         while True:
             try:
-                print("\n|" + "«" * 22 + "»" * 22 + "|\n")
+                print("\n|" + "«" * 15 + "»" * 15 + "|\n")
                 print(f"Remaining turns: {self.rounds}\n")
                 row = input("Captain, first co-ordinate: \n")
                 row = int(row)
@@ -129,9 +131,11 @@ class Board:
             print("Invalid number! Accepted range: 0-7!\n")
             return False
 
+        return True
+
     def intro(self):
         """
-        Print intro information about the game.
+        Intro screen with information about the game.
         """
         print("|" + "V" * 35 + "|\n")
         print(" The battle is about to begin!")
@@ -143,3 +147,41 @@ class Board:
         print(" Target hit: * --- Target miss: M\n")
         print("|" + "V" * 35 + "|\n")
         self.play_game()
+
+    def play_game(self):
+        """
+        The main game loop takes care of guesses and exits the game if it's
+        completed or if the player no longer wants to play.
+        """
+        player_name = input("I am Captain:\n")
+        print("\n|" + "«" * 15 + "»" * 15 + "|\n")
+        player_board = Board(self.size, self.num_ships,
+                             player_name, player=True)
+        self.player_board = player_board
+        bot_board = Board(self.size, self.num_ships, "Bot", player=False)
+        self.bot_board = bot_board
+
+        while True:
+            Board.board_print(player_board)
+            Board.board_print(bot_board)
+
+            # Asks for input from player and validates the entry
+            row, col = self.player_guess()
+            while not self.validate_input(row, col):
+                row, col = self.player_guess()
+            player_try = self.bot_board.guess(row, col)
+
+            # Bot/computer randomly hits the board
+            row, col = random_coord(self.size)
+            while self.player_board.guessed(row, col):
+                row, col = random_coord(self.size)
+            bot_try = self.player_board.bot_guess(row, col)
+
+            self.rounds -= 1
+            if self.rounds == 14:
+                print("\nThe battle is over.")
+                return False
+
+
+run_game = Board(size=8, num_ships=8, name="")
+run_game.intro()
