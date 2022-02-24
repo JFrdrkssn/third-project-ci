@@ -128,3 +128,18 @@ class Board:
         except ValueError:
             print("Invalid number! Accepted range: 0-7!\n")
             return False
+
+    def intro(self):
+        """
+        Print intro information about the game.
+        """
+        print("|" + "V" * 35 + "|\n")
+        print(" The battle is about to begin!")
+        print(" Board is 8x8. You have 8 ships.\n")
+        print(" Top left corner is row 0, col 0")
+        print(" Enter target co-ordinates using numbers")
+        print(" Valid co-ordinates are 0-7")
+        print(" Only single digits are valid")
+        print(" Target hit: * --- Target miss: M\n")
+        print("|" + "V" * 35 + "|\n")
+        self.play_game()
