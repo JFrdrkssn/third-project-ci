@@ -39,6 +39,19 @@ class Board:
         for row in self.board:
             print(" ".join(row))
             row_number += 1
+
+    def ship_placing(self):
+        """
+        Place ships in random positions on the board.
+        For player ships, this method marks the board with (S).
+        """
+        for _ in range(self.num_ships):
+            row, col = random_coord(self.size)
+            while (row, col) in self.ships:
+                row, col = random_coord(self.size)
+            self.ships.append((row, col))
+            if self.player:
+                self.board[row][col] = "S"
     
     def guess(self, row, col):
         """
@@ -56,5 +69,5 @@ class Board:
             print(f"Hit confirmed, Captain {self.name.capitalize()}!"
         else:
             print("Target missed, sir!")
-            
+
 
