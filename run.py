@@ -93,3 +93,21 @@ class Board:
             return True
         return False
 
+    def player_guess(self):
+        """
+        Prompts the user for input.
+        Converts input to integers.
+        """
+        while True:
+            try:
+                print("\n|" + "«" * 22 + "»" * 22 + "|\n")
+                print(f"Remaining turns: {self.turns}\n")
+                row = input("Captain, first co-ordinate: \n")
+                row = int(row)
+                col = input("Sir, second co-ordinate: \n")
+                col = int(col)
+                break
+            except ValueError:
+                print("We can only enter numbers for co-ordinates!")
+
+        return int(row), int(col)
