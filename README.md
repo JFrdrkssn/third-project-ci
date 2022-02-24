@@ -1,31 +1,97 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1 align="center" style="font-size: 250%;"><b>
+Battleships Terminal Game
+</b></h1>
 
-Welcome USER_NAME,
+[Check the live project here!](https://jfrdrkssn.github.io/second-project-ci/)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
 
-## Reminders
+---
+## How to play
+---
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+This game is based on the classic [Battleships game](https://en.wikipedia.org/wiki/Battleship_(game)).
 
-## Creating the Heroku app
+When the game starts an info area is displayed at the top, containing info about the game. The player is then prompted to enter a name. The boards are drawn up and the player can now enter co-ordinates.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+The player can see their ships, marked with an **__S__**, on their board. The computer ships are hidden.
+Hits are marked with **__*__** and misses with **__M__*.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+---
+## **Features**
+---
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+- Info
+    - At the top of the game there's info on how the game is set up.
+    
+    add image
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+- Random ship generation on the game board
+    - Ships are placed randomly on both the player and computer board.
+    - The computer ships are invisible to the player.
 
-Connect your GitHub repository and deploy as normal.
+    ADD IMAGE
 
-## Constraints
+- Turn based
+    - The game is turn based.
+    - There's 16 rounds in total.
+    - Rounds are updated and displayed after each turn.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+    ADd image
 
------
-Happy coding!
+- Input validation
+    - Player can choose any name. It's capitalized when referenced.
+    - When entering co-ordinates for the board, only __whole numbers__ within the board size are valid.
+    - The player is informed of any input errors, like entering the same co-ordinates (numbers) twice.
+
+    add image
+
+### **Unimplemented features**
+
+- Player and computer scores
+    - When all ships on either board has been sunk, declare a winner.
+    - If either the player or computer has a higher score when all rounds are over, declare a winner.
+
+---
+## **Data Model**
+---
+
+The data chosen for this project is a class. The class is called Board and holds everything for the application to run.
+
+---
+## **Testing**
+---
+
+
+    - [PEP 8 linter](http://pep8online.com/)
+
+
+### **Bugs**
+
+No known bugs.
+
+---
+## **Deployment**
+---
+
+### **Heroku**
+
+The project was deployed to Heroku using the following steps...
+
+1. Log in to Heroku and create a new application.
+2. Go to the "Settings" tab.
+3. Add the following buildpacks in this order.
+    1. heroku/python
+    2. heroku/nodejs
+4. Link [this repository](https://github.com/JFrdrkssn/third-project-ci) with the Heroku application.
+5. Choose "Automatic Deployment" or "Manual Deployment".
+
+
+## **Credits**
+
+### **Code**
+- The code is based on [Code Institute's](https://codeinstitute.net/) school curriculum. It's from a video where a tutor shows an example of a simple Battleships game in Python.
+
+## Acknoledgments
+
+- My Mentor, Gerard McBride, for continuous helpful feedback and support.
+- Fellow student Patrik Österljung, for peer review of code and insightful tips. [GitHub](https://github.com/oljung)
