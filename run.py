@@ -22,7 +22,7 @@ class Board:
         self.num_ships = num_ships
         self.name = name
         self.player = player
-        self.board = [[" " + "-" for row in range(size)] for col in range(size)]
+        self.board = [["-" for row in range(size)] for col in range(size)]
         # Stores the co-ordinates for ships
         self.ships = []
         # Stores the guesses (co-ordinates)
