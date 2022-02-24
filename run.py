@@ -66,8 +66,21 @@ class Board:
 
         if (row, col) in self.ships:
             self.board[row][col] = "*"
-            print(f"Hit confirmed, Captain {self.name.capitalize()}!"
+            print(f"\nHit confirmed, Captain {self.name.capitalize()}!"
         else:
-            print("Target missed, sir!")
+            print("\nTarget missed, sir!")
 
+    def bot_guess(self, row, col):
+        """
+        This method helps differentiate between
+        player and bot guesses.
+        """
+        self.guesses.append((row, col))
+        self.board[row][col] = "M"
+
+        if (row, col) in self.ships:
+            self.board[row][col] = "*"
+            print("\nBot is on fire!")
+        else:
+            print("\nBot can't aim!")
 
