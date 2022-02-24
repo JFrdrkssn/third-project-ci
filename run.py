@@ -111,3 +111,20 @@ class Board:
                 print("We can only enter numbers for co-ordinates!")
 
         return int(row), int(col)
+
+    def validate_input(self, row, col):
+        """
+        Checks if co-ordinates (input numbers) are
+        within board size range and handles invalid inputs.
+        """
+        try:
+            if not 0 <= row < 8:
+                raise ValueError
+            if not 0 <= col < 8:
+                raise ValueError
+            if self.bot_board.guessed(row, col):
+                print("We've already tried that Captain!")
+                return False
+        except ValueError:
+            print("Invalid number! Accepted range: 0-7!\n")
+            return False
