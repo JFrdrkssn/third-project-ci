@@ -101,7 +101,7 @@ class Board:
         while True:
             try:
                 print("\n|" + "«" * 22 + "»" * 22 + "|\n")
-                print(f"Remaining turns: {self.turns}\n")
+                print(f"Remaining turns: {self.rounds}\n")
                 row = input("Captain, first co-ordinate: \n")
                 row = int(row)
                 col = input("Sir, second co-ordinate: \n")
