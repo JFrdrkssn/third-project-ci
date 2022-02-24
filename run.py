@@ -178,7 +178,7 @@ class Board:
             bot_try = self.player_board.bot_guess(row, col)
 
             self.rounds -= 1
-            if self.rounds == 14:
+            if self.rounds == 0:
                 print("\nThe battle is over.")
                 return False
 
