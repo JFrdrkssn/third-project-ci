@@ -12,19 +12,20 @@ def random_coord(size):
 
 class Board:
     """
-
+    The Board class contains almost everything for the game to run. 
     """
 
-    def __init__(self, size, num_ships, name, type):
+    def __init__(self, size, num_ships, name, player=False):
         self.size = size
-        self.board = [["O" for row in range(size)] for col in range(size)]
         self.num_ships = num_ships
         self.name = name
-        self.type = type
-        # Stores the guesses on this board/game
-        self.guesses = []
-        # Stores the coordinates for ships
+        self.player = player
+        self.board = [["O" for row in range(size)] for col in range(size)]
+        # Stores the co-ordinates for ships
         self.ships = []
+        # Stores the guesses (co-ordinates)
+        self.guesses = []
+        self.rounds = 16
     
 
     def boards(self):
