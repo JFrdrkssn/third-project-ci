@@ -84,3 +84,12 @@ class Board:
         else:
             print("\nBot can't aim!")
 
+    def guessed(self, row, col):
+        """
+        Checks if player has already entered
+        a set of co-ordinates.
+        """
+        if (row, col) in self.guesses:
+            return True
+        return False
+
