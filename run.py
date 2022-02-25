@@ -107,15 +107,13 @@ class Board:
             try:
                 print("\n|" + "«" * 15 + "»" * 15 + "|\n")
                 print(f" Remaining turns: {self.rounds}\n")
-                row = input(" Captain, first co-ordinate: \n")
-                row = int(row)
-                col = input(" Sir, second co-ordinate: \n")
-                col = int(col)
+                row = int(input(" Captain, first co-ordinate: \n"))
+                col = int(input(" Sir, second co-ordinate: \n"))
                 break
             except ValueError:
                 print(" We can only enter numbers for co-ordinates!")
 
-        return int(row), int(col)
+        return row, col
 
     def validate_input(self, row, col):
         """
