@@ -28,12 +28,13 @@ class Board:
         # Stores the guesses (co-ordinates)
         self.guesses = []
         self.rounds = 16
+        # Runs this method when boards are initialized
         self.ship_placing()
 
     def board_print(self):
         """
         Prints the game boards for both the player and computer.
-        It adds co-ordinate numbers on the and left of the board.
+        It adds co-ordinate numbers on the top and left of the board.
         """
         print(f"\n {self.name.capitalize()}'s board\n")
         print("  0 1 2 3 4 5 6 7")
@@ -67,7 +68,7 @@ class Board:
         self.board[row][col] = "M"
         print(f"\n You entered {row} and {col}.")
 
-        # If player hits a ship
+        # If player hits a ship, mark board and inform player
         if (row, col) in self.ships:
             self.board[row][col] = "*"
             print("\n Hit confirmed, Captain!")
@@ -76,13 +77,13 @@ class Board:
 
     def bot_guess(self, row, col):
         """
-        This method helps differentiate between
-        player and bot guesses.
+        This method helps differentiate
+        between player and bot guesses.
         """
         self.guesses.append((row, col))
         self.board[row][col] = "M"
 
-        # If bot hits a ship
+        # If bot hits a ship, mark board and inform player
         if (row, col) in self.ships:
             self.board[row][col] = "*"
             print("\n Bot is on fire!")
@@ -106,7 +107,7 @@ class Board:
         while True:
             try:
                 print("\n|" + "«" * 15 + "»" * 15 + "|\n")
-                print(f" Remaining turns: {self.rounds}\n")
+                print(f" Remaining rounds: {self.rounds}\n")
                 row = int(input(" Captain, first co-ordinate: \n"))
                 col = int(input(" Sir, second co-ordinate: \n"))
                 break
