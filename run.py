@@ -49,6 +49,7 @@ class Board:
         """
         for _ in range(self.num_ships):
             row, col = random_coord(self.size)
+            # Loops until an empty space is found
             while (row, col) in self.ships:
                 row, col = random_coord(self.size)
             self.ships.append((row, col))
@@ -66,6 +67,7 @@ class Board:
         self.board[row][col] = "M"
         print(f"\n You entered {row} and {col}.")
 
+        # If player hits a ship
         if (row, col) in self.ships:
             self.board[row][col] = "*"
             print("\n Hit confirmed, Captain!")
@@ -80,6 +82,7 @@ class Board:
         self.guesses.append((row, col))
         self.board[row][col] = "M"
 
+        # If bot hits a ship
         if (row, col) in self.ships:
             self.board[row][col] = "*"
             print("\n Bot is on fire!")
@@ -120,6 +123,7 @@ class Board:
         within board size range and handles invalid inputs.
         """
         try:
+            # Checks number range for player inputs
             if not 0 <= row < 8:
                 raise ValueError
             if not 0 <= col < 8:
@@ -155,26 +159,33 @@ class Board:
         """
         player_name = input(" I am Captain:\n")
         print("\n|" + "«" * 15 + "»" * 15 + "|\n")
+        # Initialize the player board
         player_board = Board(self.size, self.num_ships,
                              player_name, player=True)
         self.player_board = player_board
+        # Initialize the bot board
         bot_board = Board(self.size, self.num_ships, "Bot", player=False)
         self.bot_board = bot_board
 
         while True:
+            # Prints the boards repeatedly, no scrolling needed
             Board.board_print(player_board)
             Board.board_print(bot_board)
 
             # Asks for input from player and validates the entry
             row, col = self.player_guess()
+            # Loops until a valid guess has been put in
             while not self.validate_input(row, col):
                 row, col = self.player_guess()
+            # This marks the bot's board depending on guess
             player_try = self.bot_board.guess(row, col)
 
             # Bot/computer randomly hits the board
             row, col = random_coord(self.size)
+            # Loops until a valid position has been found
             while self.player_board.guessed(row, col):
                 row, col = random_coord(self.size)
+            # This marks the player's board depending on guess
             bot_try = self.player_board.bot_guess(row, col)
 
             self.rounds -= 1
@@ -182,6 +193,7 @@ class Board:
                 print("\n The battle is over.")
                 return False
 
-
+# Sets the board size and number of ships
+# Names are inputed or already set
 run_game = Board(size=8, num_ships=8, name="")
 run_game.intro()
