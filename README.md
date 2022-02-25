@@ -5,15 +5,6 @@ Battleships Terminal Game
 [Check the live project here!](https://battleships-terminal-game.herokuapp.com/)
 
 ---
-## **User Stories**
----
-
-- As a player, I want information on how to play the game.
-- As a player, I want to be able to enter a name.
-- As a player, I want to be informed of game events.
-- As a player, I want to know when the game is over.
-
----
 ## **How to play**
 ---
 
@@ -61,6 +52,15 @@ Hits are marked with __*__ and misses with **M**.
     - When rounds are over, check which player has sunk the most ships. Declare a winner based on highest score or a tie.
 
 ---
+## **User Stories**
+---
+
+- As a player, I want information on how to play the game.
+- As a player, I want to be able to enter a name.
+- As a player, I want to be informed of game events.
+- As a player, I want to know when the game is over.
+
+---
 ## **Data Model**
 ---
 
@@ -96,7 +96,7 @@ It contains all the methods to make the game function properly, like adding ship
 ## **Testing**
 ---
 
-### **User Stories**
+### **Testing User Stories**
 
 - As a player, I want information on how to play the game.
     - When the game loads, information about the game can be found at the top, clearly shown when opening the page.
@@ -117,8 +117,6 @@ I have tested the code manually and through the PEP8 linter.
 - Validated inputs by entering letters and numbers outside the accepted range.
 ![Input wrong number](assets/screenshots/valid-input.png "Input wrong number")
 ![Input letter](assets/screenshots/letter.png "Input letter")
-
-[Am I Responsive?](http://ami.responsivedesign.is/?url=https://jfrdrkssn.github.io/first-project-ci/index.html)
 
 ![Am I Responsive Screenshot](assets/screenshots/air.png "Am I Responsive")
 
