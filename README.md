@@ -4,6 +4,14 @@ Battleships Terminal Game
 
 [Check the live project here!](https://battleships-terminal-game.herokuapp.com/)
 
+---
+## **User Stories**
+---
+
+- As a player, I want information on how to play the game.
+- As a player, I want to be able to enter a name.
+- As a player, I want to be informed of game events.
+- As a player, I want to know when the game is over.
 
 ---
 ## **How to play**
@@ -88,6 +96,19 @@ It contains all the methods to make the game function properly, like adding ship
 ## **Testing**
 ---
 
+### **User Stories**
+
+- As a player, I want information on how to play the game.
+    - When the game loads, information about the game can be found at the top, clearly shown when opening the page.
+- As a player, I want to be able to enter a name.
+    - The first thing the player is prompted for is entering a name.
+- As a player, I want to be informed of game events.
+    - The player is informed of both player and bot hits and misses. The player is also informed of invalid inputs.
+- As a player, I want to know when the game is over.
+    - The rounds counter ends the game after 16 rounds. This is a very simple but not enganging solution. Adding scores based on number of hits and combining that with the rounds counter would make for a better game.
+
+
+### **Code testing**
 I have tested the code manually and through the PEP8 linter.
 
 [PEP8 linter](http://pep8online.com/)
